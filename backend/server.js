@@ -6,10 +6,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Root Route
+app.get("/", (req, res) => {
+  res.json({
+    success: true,
+    message: "Semaphore Synchronization Backend Running 🚀"
+  });
+});
+
+// API Routes
 app.use("/api/semaphore", require("./routes/semaphore"));
 
-const PORT = 5000;
-
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+module.exports = app;
